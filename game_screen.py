@@ -1,5 +1,5 @@
 import pygame
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, QUIT, INIT
+from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, QUIT, INIT
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion
 
@@ -40,7 +40,7 @@ def game_screen(window):
     # ===== Loop principal =====
     pygame.mixer.music.play(loops=-1)
 
-    next_state = INIT
+    next_state = OVER
 
     while state != DONE:
         clock.tick(FPS)
@@ -110,12 +110,15 @@ def game_screen(window):
                 assets[BOOM_SOUND].play()
                 player.kill()
                 lives -= 1
+
                 explosao = Explosion(player.rect.center, assets)
                 all_sprites.add(explosao)
+
                 state = EXPLODING
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
+                
         elif state == EXPLODING:
             now = pygame.time.get_ticks()
             if now - explosion_tick > explosion_duration:
