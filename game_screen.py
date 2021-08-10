@@ -22,6 +22,7 @@ def game_screen(window):
     # Criando o jogador
     player = Ship(groups, assets)
     all_sprites.add(player)
+    
     # Criando os meteoros
     for i in range(8):
         meteor = Meteor(assets)
@@ -102,6 +103,11 @@ def game_screen(window):
                 score += 100
                 if score % 1000 == 0:
                     lives += 1
+
+                    # Cria um meteoro a mais a cada 1000 pontos
+                    meteor = Meteor(assets)
+                    all_sprites.add(meteor)
+                    all_meteors.add(meteor)
 
             # Verifica se houve colisão entre nave e meteoro
             hits = pygame.sprite.spritecollide(player, all_meteors, True, pygame.sprite.collide_mask)
