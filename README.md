@@ -8,9 +8,9 @@ Neste repósitorio, teremos a evolução e implementação de várias funcionali
 Funcionalidades implementadas:
 
 1- Movimento do Player no eixo y (para cima e para baixo).
-2-
-3-
-4-
+2- Tela de início com as instruções do jogo
+3- Tela de 'Game Over' com a pontuação 
+4- Cria um meteoro a mais a cada 1000 pontos
 5-
 6-
 7-
