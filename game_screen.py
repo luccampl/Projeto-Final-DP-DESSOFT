@@ -1,5 +1,5 @@
 import pygame
-from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, QUIT, INIT
+from config import FPS, OVER, WHITE, WIDTH, HEIGHT, BLACK, YELLOW, RED, QUIT, INIT
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
 from sprites import Ship, Meteor, Bullet, Explosion
 
@@ -118,7 +118,7 @@ def game_screen(window):
                 keys_down = {}
                 explosion_tick = pygame.time.get_ticks()
                 explosion_duration = explosao.frame_ticks * len(explosao.explosion_anim) + 400
-                
+
         elif state == EXPLODING:
             now = pygame.time.get_ticks()
             if now - explosion_tick > explosion_duration:
@@ -149,4 +149,4 @@ def game_screen(window):
 
         pygame.display.update()  # Mostra o novo frame para o jogador
 
-    return next_state
+    return next_state, score
