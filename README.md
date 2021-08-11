@@ -13,5 +13,5 @@ Funcionalidades implementadas:
 4- Cria um meteoro a mais a cada 500 pontos
 5- O jogo, a pontuação e as vidas reiniciam ao apertar uma tecla na tela de game over, voltando para a tela de inicio
 6- Animação na tela de início do jogo (Movimento lateral no escrito "Pressione uma tecla para jogar")
-7-
+7- Item que aumenta a quantidade de vidas do jogador (Golden Heart a cada 1000 pontos)
 8-
