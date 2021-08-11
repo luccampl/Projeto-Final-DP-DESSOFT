@@ -1,7 +1,7 @@
 import pygame
 from config import FPS, OVER, WHITE, WIDTH, HEIGHT, BLACK, YELLOW, RED, QUIT, INIT
 from assets import load_assets, DESTROY_SOUND, BOOM_SOUND, BACKGROUND, SCORE_FONT
-from sprites import Ship, Meteor, Bullet, Explosion
+from sprites import Ship, Meteor, Bullet, Explosion, Heart
 
 
 def game_screen(window):
@@ -10,14 +10,16 @@ def game_screen(window):
 
     assets = load_assets()
 
-    # Criando um grupo de meteoros
+    # Criando um grupo 
     all_sprites = pygame.sprite.Group()
     all_meteors = pygame.sprite.Group()
     all_bullets = pygame.sprite.Group()
+    all_hearts = pygame.sprite.Group()
     groups = {}
     groups['all_sprites'] = all_sprites
     groups['all_meteors'] = all_meteors
     groups['all_bullets'] = all_bullets
+    groups['all_hearts'] = all_hearts
 
     # Criando o jogador
     player = Ship(groups, assets)
@@ -103,6 +105,12 @@ def game_screen(window):
                 score += 100
                 if score % 1000 == 0:
                     lives += 1
+                    heart = Heart(assets)
+                    all_sprites.add(heart)
+                    all_hearts.add(heart)
+                    
+
+
 
                 # Cria um meteoro a mais a cada 500 pontos
                 if score % 500 == 0:
@@ -110,6 +118,12 @@ def game_screen(window):
                     all_sprites.add(meteor)
                     all_meteors.add(meteor)
 
+            # Verifica se há colisão entre o player e o coracao
+            hits = pygame.sprite.spritecollide(player, all_hearts, True, pygame.sprite.collide_mask)
+            if len(hits) > 0:
+                heart.kill()
+                lives += 1
+                
             # Verifica se houve colisão entre nave e meteoro
             hits = pygame.sprite.spritecollide(player, all_meteors, True, pygame.sprite.collide_mask)
             if len(hits) > 0:

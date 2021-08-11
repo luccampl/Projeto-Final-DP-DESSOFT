@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR
+from config import HEART_HEIGHT, HEART_WIDTH, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, IMG_DIR, SND_DIR, FNT_DIR
 
 
 BACKGROUND = 'background'
@@ -15,6 +15,7 @@ BOOM_SOUND = 'boom_sound'
 DESTROY_SOUND = 'destroy_sound'
 PEW_SOUND = 'pew_sound'
 FONT_I = 'Fonte_TECLA'
+HEART = 'golden_heart'
 
 def load_assets():
     assets = {}
@@ -25,6 +26,8 @@ def load_assets():
     assets[SHIP_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'playerShip1_orange.png')).convert_alpha()
     assets[SHIP_IMG] = pygame.transform.scale(assets['ship_img'], (SHIP_WIDTH, SHIP_HEIGHT))
     assets[BULLET_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'laserRed16.png')).convert_alpha()
+    assets[HEART] =pygame.image.load(os.path.join(IMG_DIR, 'golden_heart.png')).convert_alpha()
+    assets[HEART] = pygame.transform.scale(assets['golden_heart'], (HEART_WIDTH, HEART_HEIGHT))
     explosion_anim = []
     for i in range(9):
         # Os arquivos de animação são numerados de 00 a 08

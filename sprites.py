@@ -1,7 +1,7 @@
 import random
 import pygame
-from config import RED, WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, FNT_DIR
-from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
+from config import RED, WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, FNT_DIR, HEART_WIDTH, HEART_HEIGHT
+from assets import HEART, SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
 from os import path
 
 class Ship(pygame.sprite.Sprite):
@@ -173,3 +173,23 @@ class Tecla(pygame.sprite.Sprite):
             self.speedx = -1
         if self.rect.centerx <= 220:
             self.speedx = 1
+
+class Heart(pygame.sprite.Sprite):
+    def __init__(self, assets):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = assets[HEART]
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randint(0, WIDTH - HEART_WIDTH)
+        self.rect.y = random.randint(-100, - HEART_HEIGHT)
+        
+        self.speedy = 4
+
+    def update(self):
+        # Atualizando a posição do coracao
+        self.rect.y += self.speedy
+        
+        if self.rect.top > HEIGHT or self.rect.right < 0 or self.rect.left > WIDTH:
+            self.kill()
