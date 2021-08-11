@@ -10,7 +10,7 @@ def game_over_screen(screen, score):
     clock = pygame.time.Clock()
     assets = load_assets()
     # Carrega o fundo da tela inicial
-    background = pygame.image.load(path.join(IMG_DIR, 'game_over_screen_01.PNG')).convert()
+    background = pygame.image.load(path.join(IMG_DIR, 'game_over_screen_02.PNG')).convert()
     background_rect = background.get_rect()
 
     running = True
