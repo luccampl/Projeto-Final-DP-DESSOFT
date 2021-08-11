@@ -1,8 +1,8 @@
 import random
 import pygame
-from config import WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT
+from config import RED, WIDTH, HEIGHT, METEOR_WIDTH, METEOR_HEIGHT, SHIP_WIDTH, SHIP_HEIGHT, FNT_DIR
 from assets import SHIP_IMG, PEW_SOUND, METEOR_IMG, BULLET_IMG, EXPLOSION_ANIM
-
+from os import path
 
 class Ship(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -151,3 +151,25 @@ class Explosion(pygame.sprite.Sprite):
                 self.image = self.explosion_anim[self.frame]
                 self.rect = self.image.get_rect()
                 self.rect.center = center
+
+# Classe que representa o escrito "Pressione qualquer tecla para começar"
+# Animação para faze-lo 'andar'
+class Tecla(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+
+        inicia = pygame.font.Font(path.join(FNT_DIR, 'Fonte_TECLA.ttf'), 22)
+        self.image = inicia.render('Pressione uma tecla para comecar', True, RED)
+        
+        self.rect = self.image.get_rect()
+        self.rectx = WIDTH / 2
+        self.recty = HEIGHT - 50
+        
+        self.speedx = 1
+
+    def update(self):
+        self.rect.x += self.speedx
+        if self.rect.centerx >= 230:
+            self.speedx = -1
+        if self.rect.centerx <= 180:
+            self.speedx = 1
