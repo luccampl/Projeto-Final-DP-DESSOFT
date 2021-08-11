@@ -11,7 +11,7 @@ Funcionalidades implementadas:
 2- Tela de início com as instruções do jogo
 3- Tela de 'Game Over' com a pontuação 
 4- Cria um meteoro a mais a cada 1000 pontos
-5-
+5- Tanto a pontuação, quanto as vidas reiniciam ao apertar uma tecla na tela de game over
 6-
 7-
 8-
