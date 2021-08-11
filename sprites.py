@@ -162,14 +162,14 @@ class Tecla(pygame.sprite.Sprite):
         self.image = inicia.render('Pressione uma tecla para comecar', True, RED)
         
         self.rect = self.image.get_rect()
-        self.rectx = WIDTH / 2
-        self.recty = HEIGHT - 50
+        self.rect.centerx = 230
+        self.rect.y = HEIGHT - 150
         
         self.speedx = 1
 
     def update(self):
         self.rect.x += self.speedx
-        if self.rect.centerx >= 230:
+        if self.rect.centerx >= 240:
             self.speedx = -1
-        if self.rect.centerx <= 180:
+        if self.rect.centerx <= 220:
             self.speedx = 1
