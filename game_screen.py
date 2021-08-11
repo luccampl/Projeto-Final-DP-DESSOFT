@@ -104,7 +104,8 @@ def game_screen(window):
                 if score % 1000 == 0:
                     lives += 1
 
-                    # Cria um meteoro a mais a cada 1000 pontos
+                # Cria um meteoro a mais a cada 500 pontos
+                if score % 500 == 0:
                     meteor = Meteor(assets)
                     all_sprites.add(meteor)
                     all_meteors.add(meteor)
